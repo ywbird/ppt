@@ -304,7 +304,7 @@ $$
 ## <span class="bhs large">활용</span>
 
 - **S**calable **V**ector **G**raphics
-- 애니메이션 트랜지션
+- 애니메이션 트렌지션
 
 ---
 

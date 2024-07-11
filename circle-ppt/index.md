@@ -170,7 +170,7 @@ $$
 
 </div>
 
-<iframe src="https://www.desmos.com/calculator/3rp1sr9k5l?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/ogg9spxliu?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 </div>
 
@@ -178,6 +178,18 @@ $$
 
 # 마무리
 
-사용 도구
+<div class="columns">
 
- - Desmos
+<div class="all-center">
+
+사용 도구 : Desmos
+
+PPT : 이도이
+
+발표 : 곽대호
+
+</div>
+
+<iframe src="https://www.desmos.com/calculator/phshrg2sne?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+</div>

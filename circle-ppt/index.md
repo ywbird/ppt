@@ -12,13 +12,45 @@ style: |
         display: grid;
         place-items: center;
     }
+    @font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+    .title {
+        font-family: 'Cafe24Ssurround', san-serif;
+        font-weight: 400;
+        display: inline-block;
+    }
+    h1 {
+        padding-inline: 3rem;
+        padding-block: 0.1rem;
+    }
+    h1,h2,h3,h4 {
+    font-family: "Black Han Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    }
+    .rainbow {
+        background: linear-gradient(270deg, rgb(221, 2, 3) 0.00%, rgb(251, 137, 2) 20.00%, rgb(248, 235, 5) 40.00%, rgb(0, 127, 38) 60.00%, rgb(5, 75, 249) 80.00%, rgb(114, 6, 130) 100.00%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+        font-weight: bold;
+    }
 ---
 
-# <!--fit-->동글동글
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
 
-## 원의 방정식의 다양한 표현 방법
 
-## by $10315$이도이, $10303$곽대호
+# <span class="rainbow title"><!--fit-->동글동글</span>
+
+## - 원의 방정식의 다양한 표현 방법 -
+
+by $10315$이도이, $10303$곽대호
 
 ---
 
@@ -162,10 +194,10 @@ $$
 
 **중심 : $(r_1,\theta_1)$, 반지름 : $r$**
 
- - $\cos$ 법칙을 사용
+ - [$\cos$ 법칙](#9)을 사용
 
 $$
-r_0^2-2r_1r_0\cos(\theta-\theta_1)+r_1^2=r^2
+r^2=r_0^2+r_1^2-2r_1r_0\cos(\theta-\theta_1)
 $$
 
 </div>
@@ -176,26 +208,46 @@ $$
 
 ---
 
-#### $\cos$ 법칙이란?
+### $\cos$ 법칙이란?
 
-$\overline{AH} = c\sin B$
-$\overline{HC} = a - c\cos B$
-$\overline{AC} = b$
+<div class="columns">
+<div align="left">
 
-<br/>
+
+<div>
+
+<span align="center">$\overline{AH} = c\sin B$</span>
+<span align="center">$\overline{HC} = a - c\cos B$</span>
+<span align="center">$\overline{AC} = b$</span>
+
+
+</div>
+
+<div align="left">
 
 $$
 \begin{equation}
 \begin{aligned}
 b^2 &= (c\sin B)^2 + (a - c\cos B)^2 \\
-    &= c^2 \sin^2 B+c^2 \cos^2 B+a^2-2ac\cos B
+    &= c^2 \sin^2 B+ c^2  \cos^2 B  +a^2-2ac\cos B \\
+    &= c^2 ( \sin^2 B+ \cos^2 B ) +a^2-2ac\cos B
 \end{aligned}
 \end{equation}
 $$
 
-$$
-b^2 = c^2+a^2-2ac\cos B
-$$
+</div>
+
+<br/>
+
+$\therefore b^2 = c^2+a^2-2ac\cos B$
+$(\because \sin^2 B+ \cos^2 B=1)$
+
+</div>
+
+<iframe src="https://www.desmos.com/calculator/2plpidfimm?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+
+</div>
+
 
 ---
 
@@ -207,9 +259,9 @@ $$
 
 사용 도구 : Desmos
 
-PPT : 이도이
+PPT : <span class="rainbow">이도이</span>
 
-발표 : 곽대호
+발표 : <span class="rainbow">곽대호</span>
 
 </div>
 

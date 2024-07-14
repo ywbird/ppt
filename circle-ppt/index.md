@@ -114,7 +114,7 @@ $f(x)=\pm\sqrt{r^2-(x-a)^2}+b$
 </div>
 
 <!--DESMOS 이미지 넣기-->
-<iframe src="https://www.desmos.com/calculator/lijayc4tga?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/ar5gzfdf56?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 </div>
 
@@ -173,6 +173,29 @@ $$
 <iframe src="https://www.desmos.com/calculator/ogg9spxliu?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 </div>
+
+---
+
+#### $\cos$ 법칙이란?
+
+$\overline{AH} = c\sin B$
+$\overline{HC} = a - c\cos B$
+$\overline{AC} = b$
+
+<br/>
+
+$$
+\begin{equation}
+\begin{aligned}
+b^2 &= (c\sin B)^2 + (a - c\cos B)^2 \\
+    &= c^2 \sin^2 B+c^2 \cos^2 B+a^2-2ac\cos B
+\end{aligned}
+\end{equation}
+$$
+
+$$
+b^2 = c^2+a^2-2ac\cos B
+$$
 
 ---
 

@@ -1,0 +1,64 @@
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
+<script type="text/javascript" src="/dist/victor.min.js"></script>
+
+<div id="box" class="jxgbox"></div>
+
+<script type="text/javascript">
+  const box = document.getElementById("box");
+
+  const width = 400-20;
+  const height = 400-20;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
+  
+  let board = JXG.JSXGraph.initBoard('box', {boundingbox: [-4,6,6,-4], axis: true, showCopyright: false });
+
+  let j1 = new Victor(0, 0);
+  let j2 = new Victor(5, 5);
+
+  let p1 = board.create("point", ([()=>j1.x,()=>j1.y]));
+  let p2 = board.create("point", ([()=>j2.x,()=>j2.y]));
+  
+  function* steps() {
+      let c1 = board.create("circle", [p1, 3]);
+      yield 0;
+      let arrow = board.create("segment", [p1, p2], {lastArrow: {type: 5}});
+      yield 0;
+      j2.norm();
+      board.update();
+      yield 0;
+      j2.multiply({x: 3, y:3});
+      board.update();
+      yield 0;
+      let j3 = j2.clone().rotate(Math.PI/2);
+      let j4 = j2.clone().rotate(-Math.PI/2);
+      let p3 = board.create("point", [()=>j3.x,()=>j3.y]);
+      let p4 = board.create("point", [()=>j4.x,()=>j4.y]);
+      let derivative1 = board.create("segment", [p1,p3], {lastArrow: {type: 5}, strokeColor: "#ee500f"});
+      let derivative2 = board.create("segment", [p1,p4], {lastArrow: {type: 5}, strokeColor: "#ee500f"});
+      board.update();
+      yield 0;
+      c1.remove();
+      arrow.remove();
+      p3.remove();
+      p4.remove();
+      derivative1.remove()
+      derivative2.remove()
+      j2 = new Victor(5,5);
+      board.update();
+      yield 1;
+  }
+
+  let iter = steps();
+
+  window.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+	  if (iter.next().value === 1) {
+	      iter = steps();
+	  }
+      }
+  })
+  
+</script>

@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Procedural Animation</title>
+
+    <link rel="stylesheet" href="/dist/reset.css">
+    <link rel="stylesheet" href="/dist/reveal.css">
+    <link rel="stylesheet" href="/dist/theme/serif.css">
+
+    <link rel="stylesheet" href="/dist/suit/SUIT-KOR.css">
+
+    <link rel="stylesheet" href="/dist/extensions.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="/plugin/highlight/tokyo-night-dark.css">
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides font-suit">
+	<section data-auto-animate>
+	  <aside class="notes" data-markdown>
+	    - hi, procedural animation 발표하게된 이도이.
+	    - 그 뜻, 기존의 애니메이션과의 비교, 효용성, 작동 원리
+	  </aside>
+	  <h1 class="r-fit-text">Procedural Animation</h1>
+	  <h2>수학적 애니메이션</h2> <!--절차적 -> 수학적 -->
+	  <hr/>
+  	  <span>by 20118 이도이</span>
+	</section>
+	<section>
+	  <h2>Sprites</h2>
+	  <div class="r-stack">
+	    <img class="fragment" alt="minecraft" src="assets/minecraft.webp"/>
+	    <img class="fragment" alt="minecraft moss" src="assets/moss.webp"/>
+	    <img class="fragment" alt="tetris" src="assets/tetris.webp"/>
+	    <img class="fragment" alt="tetris tile" src="assets/tetris-tile.webp" width="128"/>
+	    <img class="fragment" alt="celeste" src="assets/celeste.webp"/>
+	    <img class="fragment" alt="oshi" src="assets/charge.gif" width="256"/>
+	  </div>
+	</section>
+	<section data-auto-animate>
+	  <aside class="notes">
+	    - 동적 -> 주변 환경에 반응
+	  </aside>
+	  <h2 class="r-fit-text"><span data-id="proced-title1">Procedural</span> Animation</h2>
+	  <div class="e-col-wrap">	  
+	    <ul class="e-col">
+	      <li class="fragment">알고리즘을 통해 생성</li>
+	      <li class="fragment">실시간 생성 $\rightarrow$ 동적</li>
+	    </ul>
+	    <hr/>
+	    <ul class="e-col">
+	      <li class="fragment">$(r\cos\theta, r\sin\theta)$</li>
+	      <li class="fragment">$Am+B(1-m)$</li>
+	      <li class="fragment">Bezier Curve</li>
+	    </ul>
+	  </div>
+	</section>
+	<section data-auto-animate>
+	  <h2 class="r-fit-text"><span data-id="proced-title1">Procedural</span> Animation</h2>
+	  <div class="e-col-wrap">	  
+	    <ul class="e-col">
+	      <li>$(r\cos\theta, r\sin\theta)$</li>
+	      <li>$Am+B(1-m)$</li>
+	      <li>Bezier Curve</li>
+	    </ul>
+	    <iframe src="assets/anim-math.html" width="400" height="400"></iframe>
+	  </div>
+	</section>
+	<section data-auto-animate>
+	  <aside class="notes">
+	    기존의 애니메이션 - 반응성 down, but 제어 up, 직관적
+	    PA - 자동 생성, coding, learning curve
+	  </aside>
+	  <div class="e-col-wrap">
+	    <div class="e-col">
+	      <h2><span data-id="proced-title1">Procedural</span></h2>
+	      <ul>
+		<li>알고리즘을 통해 생성</li>
+		<li>실시간 생성 $\rightarrow$ 동적</li>
+	      </ul>
+	    </div>
+	    <hr/>
+	    <div class="e-col">
+	      <h2>Keyframe</h2>
+	      <ul>
+		<li class="fragment" data-fragment-index="1">각 프레임을 직접 생성</li>
+		<li class="fragment" data-fragment-index="2">미리 생성 $\rightarrow$ 동적 X</li>
+	      </ul>
+	    </div>
+	  </div>
+	</section>
+	<section>
+	  <h2>Procedural Techniques</h2>
+	  <ul>
+	    <li class="fragment">Inverse Kinematic(IK)</li>
+	    <li class="fragment">Physics Simulations</li>
+	  </ul>
+	</section>
+	<section>
+	  <section data-auto-animate>
+	    <h2 class="r-fit-text">Circle Constraint</h2>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Circle Constraint</h2>
+	    <iframe src="assets/anim-circle-constraint-step.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Circle Constraint</h2>
+	    <iframe src="assets/anim-circle-constraint.html" width="400" height="400"></iframe>
+	  </section>
+	</section>
+	<section>
+	  <section data-auto-animate>
+	    <h2 class="r-fit-text">Forward Kinematics</h2>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Forward Kinematics</h2>
+	    <iframe src="assets/anim-forward-kinematics-step.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Forward Kinematics</h2>
+	    <iframe src="assets/anim-forward-kinematics.html" width="400" height="400"></iframe>
+	  </section>
+	</section>
+	<section>	
+	  <section data-auto-animate>
+	    <h2 class="r-fit-text">&nbsp;&nbsp;FABRIK&nbsp;&nbsp;</h2>
+	   </section>
+	  <section data-auto-animate>
+	    <h2>FABRIK</h2>
+	    <ul>
+	      <li class="fragment"><code><b>F</b></code>orward</li>
+	      <li class="fragment"><code><b>A</b></code>nd</li>
+	      <li class="fragment"><code><b>B</b></code>ackward</li>
+	      <li class="fragment"><code><b>R</b></code>eaching</li>
+	      <li class="fragment"><code><b>I</b></code>nverse</li>
+	      <li class="fragment"><code><b>K</b></code>inematics</li>
+	    </ul>
+	  </section>
+	</section>
+	<section>
+	  <section data-auto-animate>
+	    <h2>FABRIK</h2>
+	    <iframe src="assets/anim-fabrik-step.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>FABRIK</h2>
+	    <iframe src="assets/anim-fabrik.html" width="400" height="400"></iframe>
+	  </section>
+	</section>
+	<section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="daddy long leg" src="assets/DaddyLongLegs_3.webp" />
+	    <div class="e-red">징그러움 주의</div>
+	  </section>
+
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="centipides" src="assets/Green_centipede_flying_around.gif"/>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="centipides" src="assets/Green_centipede_flying_around.gif"/>
+	    <iframe src="assets/anim-circle-constraint.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="daddy long leg" src="assets/Garbage_steal.gif"/>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="daddy long leg" src="assets/Garbage_steal.gif"/>
+	    <iframe src="assets/anim-fabrik.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="daddy long leg" src="assets/PortlyWholeGreendarnerdragonfly.gif" width="500"/>
+	    <iframe src="assets/anim-fabrik.html" width="400" height="400"></iframe>
+	  </section>
+	  <section data-auto-animate>
+	    <h2>Rain World</h2>
+	    <img alt="daddy long leg" src="assets/daddy.gif" width="500"/>
+	    <iframe src="assets/anim-fabrik.html" width="400" height="400"></iframe>
+	  </section>
+	</section>
+	<section>
+	  <aside class="notes">
+	    오늘 우리는 프로시저럴 애니메이션의 개념부터 실제 사례까지 살펴보았습니다. 키프레임 애니메이션이 애니메이터의 수작업으로 각 동작을 세밀하게 제어한다면, 프로시저럴 애니메이션은 알고리즘과 수학적 원리를 통해 자동으로 생성되는 새로운 패러다임입니다.
+
+	    앞으로 rainworld 같은 복잡한거 구현해보고 싶다.
+	  </aside>
+	  <h2>Summary</h2>
+	  <hr/>
+	  <span>수학적 원리를 이용해 애니메이션을 생성</span>
+	  <hr/>
+	  <ul>
+	    <li>Circle Constraint - 애벌레</li>
+	    <li>Forward Kinematics - 로봇팔</li>
+	    <li>FABRIK - 촉수</li>
+	  </ul>
+	</section>
+	<section>
+	  <h2>End..?</h2>
+	</section>
+	<section>
+	  <h2>Bezier Curve</h2>
+	  <a href="https://ywbird.kro.kr/posts/bazier/">https://ywbird.kro.kr/posts/bazier/</a>
+	  <hr/>
+	  <img alt="" src="assets/bezier.gif"/>
+	</section>
+      </div>
+    </div>
+
+    <script src="/dist/reveal.js"></script>
+    <script src="/plugin/notes/notes.js"></script>
+    <script src="/plugin/markdown/markdown.js"></script>
+    <script src="/plugin/highlight/highlight.js"></script>
+    <script src="/plugin/zoom/zoom.js"></script>
+    <script src="/plugin/math/math.js"></script>
+    <script src="/plugin/mermaid/mermaid.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+	  hash: true,
+	  // Learn about plugins: https://revealjs.com/plugins/
+	  plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath.KaTeX, RevealMermaid ]
+      });
+    </script>
+  </body>
+</html>

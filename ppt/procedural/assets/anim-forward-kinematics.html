@@ -1,0 +1,70 @@
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
+<script type="text/javascript" src="/dist/victor.min.js"></script>
+
+<div id="box" class="jxgbox"></div>
+
+<script type="text/javascript">
+  const box = document.getElementById("box");
+
+  const width = 400-20;
+  const height = 400-20;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
+
+  
+  let board = JXG.JSXGraph.initBoard('box', {boundingbox: [-100,100,100,-100], axis: true, showCopyright: false });
+
+  let keys = {};
+
+  let leng = new Victor(30, 30);
+
+  const O = new Victor(0, 0);
+  
+  let j1 = new Victor(1, 1).norm().multiply(leng);
+  let j2 = new Victor(1, 0).norm().multiply(leng);
+  let j3 = new Victor(0, 1).norm().multiply(leng);
+
+  let a1 = O.clone().add(j1);
+  let a2 = a1.clone().add(j2.clone().rotate(j1.angle()));
+  let a3 = a2.clone().add(j3.clone().rotate(j1.angle() + j2.angle()));
+
+  let p0 = board.create("point", ([()=>O.x, ()=>O.y]));
+  let p1 = board.create("point", ([()=>a1.x, ()=>a1.y]));
+  let p2 = board.create("point", ([()=>a2.x, ()=>a2.y]));
+  let p3 = board.create("point", ([()=>a3.x, ()=>a3.y]));
+
+  board.create("segment", [p0, p1]);
+  board.create("segment", [p1, p2]);
+  board.create("segment", [p2, p3]);
+
+  function update(dt) {
+      if (keys["ArrowRight"]) j1.rotate(-dt * 4);
+      if (keys["ArrowLeft"]) j1.rotate(dt * 4);
+      if (keys["ArrowDown"]) j2.rotate(-dt * 4);
+      if (keys["ArrowUp"]) j2.rotate(dt * 4);
+      if (keys["PageDown"]) j3.rotate(-dt * 4);
+      if (keys["PageUp"]) j3.rotate(dt * 4);
+
+      a1 = O.clone().add(j1);
+      a2 = a1.clone().add(j2.clone().rotate(j1.angle()));
+      a3 = a2.clone().add(j3.clone().rotate(j1.angle() + j2.angle()));
+  }
+
+  let last = 0;
+  function loop(timestamp) {
+      const dt = (timestamp - last)/1000;
+      last = timestamp;
+
+      update(dt);
+
+      board.update();
+      
+      window.requestAnimationFrame(loop);
+  }
+  window.requestAnimationFrame(loop);
+  
+  window.addEventListener("keydown", (e) => keys[e.key] = true );
+  window.addEventListener("keyup", (e) => keys[e.key] = false );
+</script>

@@ -1,0 +1,54 @@
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 100;
+	src: url('/dist/suit/SUIT-Thin.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 200;
+	src: url('/dist/suit/SUIT-ExtraLight.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 300;
+	src: url('/dist/suit/SUIT-Light.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 400;
+	src: url('/dist/suit/SUIT-Regular.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 500;
+	src: url('/dist/suit/SUIT-Medium.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 600;
+	src: url('/dist/suit/SUIT-SemiBold.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 700;
+	src: url('/dist/suit/SUIT-Bold.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 800;
+	src: url('/dist/suit/SUIT-ExtraBold.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}
+@font-face {
+	font-family: 'SUIT';
+	font-weight: 900;
+	src: url('/dist/suit/SUIT-Heavy.woff2') format('woff2');
+	unicode-range: U+AC00-D7A3;
+}

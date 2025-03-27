@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
+<script type="text/javascript" src="/dist/victor.min.js"></script>
+
+<div id="box" class="jxgbox"></div>
+
+<script type="text/javascript">
+  const box = document.getElementById("box");
+
+  const width = 400-20;
+  const height = 400-20;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
+
+  
+  let board = JXG.JSXGraph.initBoard('box', {boundingbox: [-100,100,100,-100], axis: true, showCopyright: false });
+
+  let keys = {};
+
+  let leng = new Victor(30, 30);
+
+  const O = new Victor(0, 0);
+  
+  let j1 = new Victor(1, 1).norm().multiply(leng);
+  let j2 = new Victor(1, 0).norm().multiply(leng);
+  let j3 = new Victor(0, 1).norm().multiply(leng);
+
+  let p0 = board.create("point", ([()=>O.x, ()=>O.y]));
+
+  function *steps() {
+      let p1 = board.create("point", ([()=>O.x+j1.x, ()=>O.y+j1.y]));
+      let s1 = board.create("segment", [p0, p1]);
+      yield 0;
+      let p2 = board.create("point", ([()=>O.x+j1.x+j2.x, ()=>O.y+j1.y+j2.y]));
+      let s2 = board.create("segment", [p1, p2]);
+      yield 0;
+      let p3 = board.create("point", ([()=>O.x+j1.x+j2.x+j3.x, ()=>O.y+j1.y+j2.y+j3.y]));
+      let s3 = board.create("segment", [p2, p3]);
+      yield 0;
+      p1.remove();
+      s1.remove();
+      p2.remove();
+      s2.remove();
+      p3.remove();
+      s3.remove();
+      yield 1;
+  }
+
+  let iter = steps();
+
+  window.addEventListener("keydown", (e) => {
+      if (e.code === "Space") {
+	  if (iter.next().value === 1) {
+	      iter = steps();
+	  }
+      }
+  })
+</script>

@@ -1,0 +1,39 @@
+.font-suit section > * {
+    font-family: SUIT, var(--r-heading-font), sans-serif !important;
+}
+
+.e-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.e-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.e-stack {
+    display: grid;
+    width: fit-content;
+    height: fit-content;
+}
+
+.e-stack > * {    
+    grid-column-start: 1;
+    grid-row-start: 1;
+}
+
+.e-red {
+    color: #ff2c2d !important;
+}
+
+.e-col-wrap {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.e-col{
+    flex: 1;
+}

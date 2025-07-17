@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Circle Inversion</title>
+
+	<link rel="stylesheet" href="/dist/reset.css">
+	<link rel="stylesheet" href="/dist/reveal.css">
+	<link rel="stylesheet" href="/dist/theme/simple.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="/plugin/highlight/tokyo-night-dark.css">
+	<style>
+		img {
+			/* image-rendering: pixelated; */
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1 class="r-fit-text">Circle Inversi&circledcirc;n</h1>
+				<h2>20118 이도이</h2>
+				<h4>복소평면, 극좌표, 오일러 등식, 원반전</h3>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>$\frac{1}{x}$</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>$\frac{1}{x}$</h2>
+					<div data-id="ab-def">
+						<!-- beautify ignore:start -->
+				$$
+					\begin{align*}
+					&A = \{ x\ |\ 0 < x < 1,\ &x \in \R \} \\
+					&B=\{ x\ |\ 1 < x,\ &x \in \R \}
+					\end{align*}
+				$$ 
+				<!-- beautify ignore:end -->
+					</div>
+				</section>
+				<section data-auto-animate>
+					<div data-id="ab-def">
+						<!-- beautify ignore:start -->
+				$$
+					\begin{align*}
+					&A = \{ x\ |\ 0 < x < 1,\ &x \in \R \} \\
+					&B=\{ x\ |\ 1 < x,\ &x \in \R \}
+					\end{align*}
+				$$ 
+				<!-- beautify ignore:end -->
+					</div>
+					<!-- beautify ignore:start -->
+						$$
+							\huge n(A) < n(B)\quad\text{?}
+						$$
+					<!-- beautify ignore:end -->
+				</section>
+				<section data-auto-animate>
+					<div data-id="ab-def">
+						<!-- beautify ignore:start -->
+				$$
+					\begin{align*}
+					&A = \{ x\ |\ 0 < x < 1,\ &x \in \R \} \\
+					&B=\{ x\ |\ 1 < x,\ &x \in \R \}
+					\end{align*}
+				$$ 
+				<!-- beautify ignore:end -->
+					</div>
+					<!-- beautify ignore:start -->
+						$$
+							\huge	n(A) = n(B)\quad\text{!}
+						$$
+					<!-- beautify ignore:end -->
+				</section>
+				<section data-auto-animate>
+					<div data-id="f-dom">$\huge f: (0,\ 1) \rightarrow (1,\ \infty)$</div>
+				</section>
+				<section data-auto-animate>
+					<div data-id="f-dom">$\huge f: (0,\ 1) \rightarrow (1,\ \infty)$</div>
+					<br />
+					<br />
+					<br />
+					<br />
+					<div data-id="f-def">$\huge f(x) = \frac{1}{x}$</div>
+				</section>
+				<section data-auto-animate>
+					<div data-id="f-def">$\huge f(x) = \frac{1}{x}$</div>
+					<br />
+					<img src="./assets/1_over_x.png" alt="">
+				</section>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>Complex Plane</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>Complex Plane</h2>
+					<img src="./assets/Complex_Plane.png" alt="">
+					<br />
+					<span data-id="z">$z=x+yi$</span>
+				</section>
+				<section data-auto-animate>
+					<h2>Complex Plane</h2>
+					<img src="./assets/Complex_Plane_Ex.png" alt="">
+					<br />
+					<span data-id="z">$z_0=1+2i$</span>
+				</section>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>
+						<div data-id="h2-euler">Eul$e$r's Formula</div>
+					</h2>
+				</section>
+				<section data-auto-animate>
+					<div data-id="euler-f">$\huge e^{i\theta}=\cos\theta+i\sin\theta$</div>
+				</section>
+				<section data-auto-animate>
+					<div data-id="euler-f">$\huge e^{i\theta}=\cos\theta+i\sin\theta$</div>
+					<img src="./assets/Euler.png" alt="">
+				</section>
+				<section data-auto-animate>
+					<div data-id="euler-f">$\huge r\cdot e^{i\theta}=\cos\theta+i\sin\theta$</div>
+					<img src="./assets/Euler_r.png" alt="">
+				</section>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>$\vec{P}$ola$r$ Coordinate</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>$\vec{P}$ola$r$ Coordinate</h2>
+					<img src="./assets/Euler_r.png" alt="">
+					<br />
+					$(r,\ \theta)$
+				</section>
+				<section data-auto-animate>
+					<h2>
+						Complex $\vec{P}$ola$r$
+					</h2>
+
+					<img src="./assets/Polar.png" alt="">
+					<br />
+					$(r,\ \theta) \rightarrow r\cdot e^{i\theta}$
+				</section>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>Gabriel's Horn</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>Gabriel's Horn</h2>
+					<img src="./assets/1_over_x_2.png" alt="">
+				</section>
+				<section data-auto-animate>
+					<h2>Gabriel's Horn</h2>
+					<img src="./assets/Gabriels_horn.png" alt="">
+				</section>
+				<section data-auto-animate>
+					<h2>Gabriel's Horn</h2>
+					<iframe src="./gabriel-horn.html" frameborder="0" width="910" height="510"></iframe>
+				</section>
+			</section>
+			<section data-auto-animate>
+				<section data-auto-animate>
+					<h2>Circle Inversion</h2>
+				</section>
+				<section data-auto-animate>
+					<h2>Circle Inversion</h2>
+					<img src="./assets/Circle_inversion.png" alt="n">
+					<!-- beautify ignore:start -->
+						$$
+							(r,\theta) \rightarrow (\frac{1}{r}, \theta)
+						$$
+					<!-- beautify ignore:end -->
+				</section>
+				<section data-auto-animate>
+					<h2>Circle Inversion</h2>
+					<img src="./assets/Circle_inversion.png" alt="">
+					<!-- beautify ignore:start -->
+						$$
+						  r\cdot e^{i\theta} \rightarrow \frac{1}{r}\cdot e^{i\theta}
+						$$
+					<!-- beautify ignore:end -->
+				</section>
+				<section data-auto-animate>
+					<h2>Circle Inversion</h2>
+					<img src="./assets/Circle_inversion_circle.png" alt="">
+					<p>원반전된 원은 여전히 원이다.</p>
+				</section>
+				<section data-auto-animate>
+					<h2>Circle Inversion</h2>
+					<img src="./assets/Circle_inversion_line.png" alt="">
+					<p>대상 원이 기준 원의 중심을 지날때,<br />반전된 원은 직선이 된다.</p>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="/dist/reveal.js"></script>
+	<script src="/plugin/notes/notes.js"></script>
+	<script src="/plugin/markdown/markdown.js"></script>
+	<script src="/plugin/highlight/highlight.js"></script>
+	<script src="/plugin/zoom/zoom.js"></script>
+	<script src="/plugin/math/math.js"></script>
+	<script src="/plugin/animated/animated.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			dependencies: [
+				// Other plugins
+				{src: '/plugins/animated/animated.js', async: true}
+			],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath.KaTeX]
+		});
+	</script>
+</body>
+
+</html>

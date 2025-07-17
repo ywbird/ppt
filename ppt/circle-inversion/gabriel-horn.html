@@ -1,0 +1,45 @@
+<link rel="stylesheet" type="text/css" href="https://jsxgraph.org/distrib/jsxgraph.css" />
+<script type="text/javascript" src="https://jsxgraph.org/distrib/jsxgraphcore.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style type="text/css">
+  body,
+  html {
+    /* background: oklch(23.64% 0.0045 248); */
+    background: none transparent;
+    margin: 0;
+    border: none;
+    /* background-color: #000000 !important; */
+  }
+
+  #box {
+    border-radius: 0;
+    border: none;
+  }
+</style>
+
+<body>
+  <div id="box" class="jxgbox" style="width:900px; height:500px;"></div>
+  <script>
+    let board = JXG.JSXGraph.initBoard("box", {
+      boundingbox: [-4, 4, 4, -4],
+      axis: false,
+      showCopyright: false,
+    });
+
+    let box = [-5, 5];
+    let view = board.create('view3d', [[-4, -4], [8, 8], [box, box, box]], {
+      xPlaneRear: {visible: false},
+      yPlaneRear: {visible: false}
+    });
+
+    view.create('circle3d', [[0, 0, -1], [1, 0, 0, 1], 1], {
+      strokeWidth: 3,
+      strokeColor: "#ff0000"
+    });
+
+    let f = board.jc.snippet('z=-1/(sqrt(x^2+y^2))', true, 'x,y', true)
+    view.create('functiongraph3d', [f, box, box], {
+      stepsU: 50, stepsV: 50, strokeWidth: 0.8
+    });
+  </script>
+</body>

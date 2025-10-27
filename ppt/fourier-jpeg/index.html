@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="/dist/reset.css">
+	<link rel="stylesheet" href="/dist/reveal.css">
+	<link rel="stylesheet" href="/dist/theme/blood.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="/plugin/highlight/tokyo-night-dark.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1 class="r-fit-text"><span>푸리에 변환</span> & <span>JPEG 압축</span></h1>
+				<cite>Fourier Transform & JPEG Encoding</cite>
+				<h3>by. 20118 이도이</h3>
+			</section>
+			<section>
+				<section>
+					<h2 style="font-weight: bold;">F T</h2>
+					<h3>Fourier Transform</h3>
+				</section>
+				<section>
+					<img src="https://fastly.picsum.photos/id/855/700/300.jpg?hmac=DAkjKgyamON5pI5Jope-oL93EZSbnlNqoPkL5-7lCYc"
+						alt="">
+				</section>
+				<section>
+					$$X(\xi) = \int^{\infty}_{-\infty}{x(t)e^{-2\pi i \xi t}}dt$$
+				</section>
+				<section data-auto-animate>
+					$$e^{i\theta} = \cos\theta + i\sin\theta$$
+					$$\downarrow$$
+					<div style="display: flex; align-items: center;">$X(\xi) = \displaystyle{\int^{\infty}_{-\infty}}$ <div
+							data-id="1">${x(t)\Bigl(\cos-2\pi \xi t+i \sin-2\pi \xi t\Bigr)}$</div> $dt$</div>
+				</section>
+				<section data-auto-animate>
+					<div>
+						<div data-id="1">${x(t)\Bigl(\cos-2\pi \xi t+i \sin-2\pi \xi t\Bigr)}$</div>
+					</div>
+					<br>
+					<iframe src="./assets/circle.html" width=400 height=400 frameborder="0"></iframe>
+				</section>
+				<section data-auto-animate>
+					<div style="display: flex; align-items: center;">$X(\xi) = \displaystyle{\int^{\infty}_{-\infty}}$ <div
+							data-id="1">${x(t)\Bigl(\cos-2\pi \xi t+i \sin-2\pi \xi t\Bigr)}$</div> $dt$</div>
+					<br>
+					<iframe src="./assets/fourier.html" width=400 height=400 frameborder="0"></iframe>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2 style="font-weight: bold;">F F T</h2>
+					<h3>Fast Fourier Transform</h3>
+				</section>
+				<section>
+					<h3 style="font-weight: bold;">D F T</h3>
+					<h4>Discrete Fourier Transform</h4>
+					<img src="https://fastly.picsum.photos/id/855/700/300.jpg?hmac=DAkjKgyamON5pI5Jope-oL93EZSbnlNqoPkL5-7lCYc"
+						alt="">
+				</section>
+				<section>
+					<h3 style="font-weight: bold;">F F T</h3>
+					<h4>Fast Fourier Transform</h4>
+					<br>
+
+					$\displaystyle{X(\xi) = \int^{\infty}_{-\infty}{x(t)e^{-2\pi i \xi t}}dt}$
+
+					$$\downarrow$$
+
+					$\displaystyle{X_k =\sum^{N-1}_{n=0}{x_ne^{-2\pi kn/N}}}\quad k = 0, ... , N-1 .$
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>JPEG Encoding</h2>
+					<h4>Joint Photographic Experts Group</h4>
+				</section>
+				<section>
+					<img src="./assets/malina.png" alt="">
+				</section>
+				<section>
+					<h3>Color space transform</h3>
+					<div style="display: flex; justify-content: center;">
+						<img src="./assets/Y_colored.png" alt="" width=300>
+						<img src="./assets/Cb_colored.png" alt="" width=300>
+						<img src="./assets/Cr_colored.png" alt="" width=300>
+					</div>
+				</section>
+				<section>
+					<h3>Downsampling & Blocksplitting</h3>
+				</section>
+			</section>
+			<section>
+				<h2>D C T</h2>
+				<h3>Discrete Cosine Transform</h3>
+			</section>
+		</div>
+	</div>
+
+	<script src="/dist/reveal.js"></script>
+	<script src="/plugin/notes/notes.js"></script>
+	<script src="/plugin/markdown/markdown.js"></script>
+	<script src="/plugin/highlight/highlight.js"></script>
+	<script src="/plugin/zoom/zoom.js"></script>
+	<script src="/plugin/math/math.js"></script>
+	<script src="/plugin/animated/animated.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+			dependencies: [
+				// Other plugins
+				{src: '/plugins/animated/animated.js', async: true}
+			],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath.KaTeX]
+		});
+	</script>
+</body>
+
+</html>

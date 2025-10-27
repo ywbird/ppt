@@ -1,0 +1,80 @@
+<script type="text/javascript" charset="UTF-8"
+	src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style type="text/css">
+	body,
+	html {
+		/* background: oklch(23.64% 0.0045 248); */
+		background: none transparent;
+		margin: 0;
+		border: none;
+		/* background-color: #000000 !important; */
+	}
+
+	#box {
+		border-radius: 0;
+		border: none;
+	}
+</style>
+
+<div id="box" class="jxgbox"></div>
+
+<script>
+	(function () {
+
+		const b = document.getElementById("box");
+
+		const width = 800;
+		const height = 800;
+		b.style.width = `${width}px`;
+		b.style.height = `${height}px`;
+		b.style.border = `none`;
+
+		let board = JXG.JSXGraph.initBoard("box", {
+			boundingbox: [-10, 10, 10, -10],
+			axis: false,
+			showCopyright: false,
+		});
+
+		let box = [0, 8];
+		let view = board.create('view3d', [[-4, -2], [8, 8], [box, box, [-4, 4]]], {
+			xPlaneRear: {visible: false},
+			// xAxis: {visible: false},
+			// yAxis: {visible: false},
+			zAxis: {visible: false},
+			yPlaneRear: {visible: false},
+		});
+
+		let u = board.create(
+			'slider',
+			[[-7, -8], [7, -8], [0, 0, 7]],
+			{
+				snapWidth: 1,
+				suffixLabel: "u=",
+				name: "u"
+			}
+		)
+		let v = board.create(
+			'slider',
+			[[-7, -6], [7, -6], [0, 0, 7]],
+			{
+				snapWidth: 1,
+				suffixLabel: "v=",
+				name: "v"
+			}
+		)
+
+		let f = board.jc.snippet(`
+  z =
+    (( u == 0 ) ? sqrt(2) : 1) *
+    (( v == 0 ) ? sqrt(2) : 1) *
+    cos(((2*x+1)*u*PI)/16)*
+    cos(((2*y+1)*v*PI)/16)/2;
+  `
+			, true, 'x,y', true)
+		view.create('functiongraph3d', [f, box, box], {
+			stepsU: 30, stepsV: 30, strokeWidth: 0.8
+		});
+	})();
+</script>

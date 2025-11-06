@@ -1,80 +1,100 @@
-<script type="text/javascript" charset="UTF-8"
-	src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
 <style type="text/css">
-	body,
-	html {
-		/* background: oklch(23.64% 0.0045 248); */
-		background: none transparent;
-		margin: 0;
-		border: none;
-		/* background-color: #000000 !important; */
-	}
+  body,
+  html {
+    /* background: oklch(23.64% 0.0045 248); */
+    background: none transparent;
+    margin: 0;
+    border: none;
+    /* background-color: #000000 !important; */
+  }
 
-	#box {
-		border-radius: 0;
-		border: none;
-	}
+  #box {
+    border-radius: 0;
+    border: none;
+
+  }
 </style>
 
 <div id="box" class="jxgbox"></div>
 
-<script>
-	(function () {
+<script type="text/javascript">
+  const box = document.getElementById("box");
 
-		const b = document.getElementById("box");
+  const width = 400;
+  const height = 400;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
 
-		const width = 800;
-		const height = 800;
-		b.style.width = `${width}px`;
-		b.style.height = `${height}px`;
-		b.style.border = `none`;
+  let board = JXG.JSXGraph.initBoard(
+    'box',
+    {
+      boundingbox: [-2, 2, 2, -2],
+      axis: true,
+      showCopyright: false,
+      showNavigation: false
+    });
 
-		let board = JXG.JSXGraph.initBoard("box", {
-			boundingbox: [-10, 10, 10, -10],
-			axis: false,
-			showCopyright: false,
-		});
+  const PI = Math.PI
 
-		let box = [0, 8];
-		let view = board.create('view3d', [[-4, -2], [8, 8], [box, box, [-4, 4]]], {
-			xPlaneRear: {visible: false},
-			// xAxis: {visible: false},
-			// yAxis: {visible: false},
-			zAxis: {visible: false},
-			yPlaneRear: {visible: false},
-		});
+  let slider = board.create('slider', [[-1.5, -1.75], [1.5, -1.75], [-PI / 2, 1 / 3, PI / 2]]);
 
-		let u = board.create(
-			'slider',
-			[[-7, -8], [7, -8], [0, 0, 7]],
-			{
-				snapWidth: 1,
-				suffixLabel: "u=",
-				name: "u"
-			}
-		)
-		let v = board.create(
-			'slider',
-			[[-7, -6], [7, -6], [0, 0, 7]],
-			{
-				snapWidth: 1,
-				suffixLabel: "v=",
-				name: "v"
-			}
-		)
+  const f = (x) => (Math.cos(2 * x * PI) + Math.cos(x * PI + 2)) / 2
 
-		let f = board.jc.snippet(`
-  z =
-    (( u == 0 ) ? sqrt(2) : 1) *
-    (( v == 0 ) ? sqrt(2) : 1) *
-    cos(((2*x+1)*u*PI)/16)*
-    cos(((2*y+1)*v*PI)/16)/2;
-  `
-			, true, 'x,y', true)
-		view.create('functiongraph3d', [f, box, box], {
-			stepsU: 30, stepsV: 30, strokeWidth: 0.8
-		});
-	})();
+  // let curve = board.create('curve', [
+  // 	(x) => f(x) * Math.cos(-2 * PI * slider.Value() * x) * 1.5,
+  // 	(x) => f(x) * Math.sin(-2 * PI * slider.Value() * x) * 1.5,
+  // 	0, 4*PI
+  // ], {strokeWidth: 3});
+
+  let points = []
+  for (let i = 0; i < 4 * PI; i += 0.1) {
+    points.push(board.create("point",
+      [() => f(i) * Math.cos(-2 * PI * slider.Value() * i) * 1.5,
+      () => f(i) * Math.sin(-2 * PI * slider.Value() * i) * 1.5], {name: ""}))
+  }
+
+  let curve = board.create("polygonalchain", points)
+
+  let centeroid = board.create('point', [
+    () => {
+      const c = points.reduce((p, c) => [p[0] + c.X(), p[1] + c.Y()], [0, 0])
+      return [c[0] / points.length, c[1] / points.length]
+    }
+  ], {size: 8, color: "red", name: "Centeroid"})
+  centeroid.addParents([points])
+
+	//
+	// let list = middleRiemannList(-3, 3, 0.01, f(2))
+	// 	.map(p => board.create('point', p, {name: "", size: 0, fixed: true}))
+	//
+	// let chain = board.create('polygonalchain', list, {strokeColor: 'blue'});
+	//
+	// /**
+	// 	* @param min number
+	// 	* @param max number
+	// 	* @param spacing number
+	// 	* @param func (number) => []number
+	// 	* @return []number
+	// 	*/
+	// function middleRiemannList(min, max, spacing, func) {
+	// 	let result = []
+	// 	for (let i = min; i < max; i += spacing) {
+	// 		const r = func(i + spacing / 2)
+	// 		result.push(r)
+	// 	}
+	// 	return result
+	// }
+	//
+	// const riemannSum = (l) => l.reduce((p, c) => [p[0] + c[0], p[0] + c[0]], [0, 0])
+	//
+	// function X(xi) {
+	// 	return middleRiemannSum(-1000, 1000, 0.1, (x) => [
+	// 		f(x) * Math.cos(-2 * Math.Pi * xi * x),
+	// 		f(x) * Math.sin(-2 * Math.Pi * xi * x)
+	// 	])
+	// }
 </script>

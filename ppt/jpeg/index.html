@@ -267,8 +267,8 @@
         </section>
         <section>
           <h2>Entropy Encoding</h2>
-          <div style="display: flex;gap:2rem;justify-content: center;align-items:center;"><iframe src="./assets/zigzag.html" width=400
-              height=400 frameborder="0"></iframe>
+          <div style="display: flex;gap:2rem;justify-content: center;align-items:center;"><iframe
+              src="./assets/zigzag.html" width=400 height=400 frameborder="0"></iframe>
             <div style="font-size: 50%;"><fit->
                 $$
                 \begin{array}{rrrrrrrr}
@@ -290,9 +290,59 @@
                 \end{array}
                 $$
               </fit-></div>
-
           </div>
         </section>
+      </section>
+      <section>
+        <section>
+          <h2>Summary</h2>
+        </section>
+        <section>
+          <h3>Fast Fourier Transform</h3>
+          $\displaystyle{X(\xi) = \int^{\infty}_{-\infty}{x(t)e^{-2\pi i \xi t}}dt}$
+
+          $$\downarrow$$
+
+          <div data-id="2">$\displaystyle{X_k =\sum^{N-1}_{n=0}{x_ne^{-2\pi kn/N}}}\quad k = 0, ... , N-1 .$</div>
+        </section>
+        <section>
+          <h3>Discrete Cosine Transform</h3>
+          <br>
+          <div style="font-size:70%;" data-id="3">
+            \[G_{u,v} =
+            \displaystyle{\frac14\alpha(u)\alpha(v)\sum^7_{x=0}\sum^7_{y=0}g_{x,y}\cos\left[\frac{(2x+1)u\pi}{2\times8}\right]\cos\left[\frac{(2y+1)v\pi}{2\times8}\right]}\]
+          </div>
+        </section>
+        <section>
+          <h3>Quantization</h3>
+          <br>
+          <div style="font-size: 60%;">
+            $$
+            Q=\left[\begin{array}{rrrrrrrr}
+            16& 11& 10& 16& 24& 40& 51& 61 \\
+            12& 12& 14& 19& 26& 58& 60& 55 \\
+            14& 13& 16& 24& 40& 57& 69& 56 \\
+            14& 17& 22& 29& 51& 87& 80& 62 \\
+            18& 22& 37& 56& 68& 109& 103& 77 \\
+            24& 35& 55& 64& 81& 104& 113& 92 \\
+            49& 64& 78& 87& 103& 121& 120& 101 \\
+            72& 92& 95& 98& 112& 100& 103& 99\\
+            \end{array}\right]\quad\quad
+            $$
+          </div>
+        </section>
+      </section>
+      <section>
+        <h2>마치며...</h2>
+
+        <ul style="font-size: 60%;">
+          <li><code>https://ywppt.kro.kr/docs/jpeg.html</code></li>
+          <li><code>https://ywppt.kro.kr/ppt/jpeg</code></li>
+          <li><code>https://ywbird.github.io/jpeg-dct-web</code></li>
+        </ul>
+        <aside class="notes">
+          asd
+        </aside>
       </section>
     </div>
   </div>

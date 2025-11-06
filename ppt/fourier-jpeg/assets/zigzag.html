@@ -1,0 +1,98 @@
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style type="text/css">
+  body,
+  html {
+    /* background: oklch(23.64% 0.0045 248); */
+    background: none transparent;
+    margin: 0;
+    border: none;
+    /* background-color: #000000 !important; */
+  }
+
+  #box {
+    border-radius: 0;
+    border: none;
+
+  }
+</style>
+
+
+<div id="box" class="jxgbox"></div>
+
+<script type="text/javascript">
+  const box = document.getElementById("box");
+
+  const width = 400;
+  const height = 400;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
+
+  let board = JXG.JSXGraph.initBoard(
+    'box',
+    {
+      boundingbox: [-1, -1, 8, 8],
+      axis: true,
+      showCopyright: false,
+      showNavigation: false
+    });
+
+  const PI = Math.PI
+
+  const zigzag = [
+    [0, 0], [0, 1], [1, 0], [2, 0], [1, 1], [0, 2], [0, 3], [1, 2],
+    [2, 1], [3, 0], [4, 0], [3, 1], [2, 2], [1, 3], [0, 4], [0, 5],
+    [1, 4], [2, 3], [3, 2], [4, 1], [5, 0], [6, 0], [5, 1], [4, 2],
+    [3, 3], [2, 4], [1, 5], [0, 6], [0, 7], [1, 6], [2, 5], [3, 4],
+    [4, 3], [5, 2], [6, 1], [7, 0], [7, 1], [6, 2], [5, 3], [4, 4],
+    [3, 5], [2, 6], [1, 7], [2, 7], [3, 6], [4, 5], [5, 4], [6, 3],
+    [7, 2], [7, 3], [6, 4], [5, 5], [4, 6], [3, 7], [4, 7], [5, 6],
+    [6, 5], [7, 4], [7, 5], [6, 6], [5, 7], [6, 7], [7, 6], [7, 7]
+  ]
+
+  let curve = board.create("polygonalchain", zigzag, {
+    vertices: {
+      fixed: true
+    },
+    borders: {strokeWidth: 5}
+  })
+
+  curve.borders.forEach((border, index) => {
+    border.setAttribute({
+      lastArrow: {type: 5, size: 4}
+    });
+  });
+
+	//
+	// let list = middleRiemannList(-3, 3, 0.01, f(2))
+	// 	.map(p => board.create('point', p, {name: "", size: 0, fixed: true}))
+	//
+	// let chain = board.create('polygonalchain', list, {strokeColor: 'blue'});
+	//
+	// /**
+	// 	* @param min number
+	// 	* @param max number
+	// 	* @param spacing number
+	// 	* @param func (number) => []number
+	// 	* @return []number
+	// 	*/
+	// function middleRiemannList(min, max, spacing, func) {
+	// 	let result = []
+	// 	for (let i = min; i < max; i += spacing) {
+	// 		const r = func(i + spacing / 2)
+	// 		result.push(r)
+	// 	}
+	// 	return result
+	// }
+	//
+	// const riemannSum = (l) => l.reduce((p, c) => [p[0] + c[0], p[0] + c[0]], [0, 0])
+	//
+	// function X(xi) {
+	// 	return middleRiemannSum(-1000, 1000, 0.1, (x) => [
+	// 		f(x) * Math.cos(-2 * Math.Pi * xi * x),
+	// 		f(x) * Math.sin(-2 * Math.Pi * xi * x)
+	// 	])
+	// }
+</script>

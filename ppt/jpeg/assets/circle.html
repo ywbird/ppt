@@ -2,58 +2,60 @@
 <script type="text/javascript" src="/dist/jsxgraph.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
 <style type="text/css">
-	body,
-	html {
-		/* background: oklch(23.64% 0.0045 248); */
-		background: none transparent;
-		margin: 0;
-		border: none;
-		/* background-color: #000000 !important; */
-	}
+  body,
+  html {
+    /* background: oklch(23.64% 0.0045 248); */
+    background: none transparent;
+    margin: 0;
+    border: none;
+    /* background-color: #000000 !important; */
+  }
 
-	#box {
-		border-radius: 0;
-		border: none;
+  #box {
+    border-radius: 0;
+    border: none;
 
-	}
+  }
 </style>
 
 <div id="box" class="jxgbox"></div>
 
 <script type="text/javascript">
-	const box = document.getElementById("box");
+  const box = document.getElementById("box");
 
-	const width = 400;
-	const height = 400;
-	box.style.width = `${width}px`;
-	box.style.height = `${height}px`;
-	box.style.border = `none`;
+  const width = 400;
+  const height = 400;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
 
-	let board = JXG.JSXGraph.initBoard(
-		'box',
-		{
-			boundingbox: [-1.5, 1.5, 1.5, -1.5],
-			axis: true,
-			showCopyright: false,
-			showNavigation: false
-		});
+  let board = JXG.JSXGraph.initBoard(
+    'box',
+    {
+      boundingbox: [-1.5, 1.5, 1.5, -1.5],
+      axis: true,
+      showCopyright: false,
+      showNavigation: false
+    });
 
-	const PI = Math.PI
+  const PI = Math.PI
 
-	let slider1 = board.create('slider', [[-1.4, -1.2], [1.4, -1.2], [0, 1, 10 * PI]]);
-	let slider2 = board.create('slider', [[-1.4, -1.4], [1.4, -1.4], [0, 1, PI]]);
+  let slider1 = board.create('slider', [[-1.4, -1.2], [1.4, -1.2], [0, 1, 10 * PI]]);
+  let slider2 = board.create('slider', [[-1.4, -1.4], [1.4, -1.4], [0, 1, PI]]);
 
-	let p1 = board.create('point', [
-		() => Math.cos(slider1.Value() / slider2.Value()) * Math.cos(slider1.Value()*2*PI),
-		() => Math.cos(slider1.Value() / slider2.Value()) * Math.sin(slider1.Value()*2*PI)
-	], {size: 3, color: "blue", name: ""})
-	p1.addParents([slider1])
+  const f = (x) => (Math.cos(2 * x * PI) + Math.cos(x * PI + 2)) / 2
 
-	let c1 = board.create('curve', [
-		(t) => Math.cos(t / slider2.Value()) * Math.cos(t*2*PI),
-		(t) => Math.cos(t / slider2.Value()) * Math.sin(t*2*PI),
-		0, () => slider1.Value()
-	], {strokeWidth: 2})
-	c1.addParents([slider1, slider2])
+  let p1 = board.create('point', [
+    () => f(slider1.Value() / slider2.Value()) * Math.cos(slider1.Value() * 2 * PI),
+    () => f(slider1.Value() / slider2.Value()) * Math.sin(slider1.Value() * 2 * PI)
+  ], {size: 3, color: "blue", name: ""})
+  p1.addParents([slider1])
+
+  let c1 = board.create('curve', [
+    (t) => f(t / slider2.Value()) * Math.cos(t * 2 * PI),
+    (t) => f(t / slider2.Value()) * Math.sin(t * 2 * PI),
+    0, () => slider1.Value()
+  ], {strokeWidth: 2})
+  c1.addParents([slider1, slider2])
 
 </script>

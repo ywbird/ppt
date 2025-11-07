@@ -33,7 +33,7 @@
         <section data-auto-animate>
           <h2 style="font-weight: bold;">F T</h2>
           <h3>Fourier Transform</h3>
-          <iframe src="./assets/graph1.html" width=700 height=300 frameborder="0"></iframe>
+          <iframe src="assets/graph1.html" width=700 height=300 frameborder="0"></iframe>
         </section>
         <section>
           $$X(\xi) = \int^{\infty}_{-\infty}{x(t)e^{-2\pi i \xi t}}dt$$
@@ -50,8 +50,10 @@
           <div style="display: flex; justify-content: center;">
             <fit- data-id=1>\[{x(t)\Bigl(\cos-2\pi \xi t+i \sin-2\pi \xi t\Bigr)}\]</fit->
           </div>
-          <br>
-          <iframe src="./assets/circle.html" width=400 height=400 frameborder="0"></iframe>
+          <iframe src="assets/circle.html" width=400 height=400 frameborder="0"></iframe>
+        </section>
+        <section data-auto-animate>
+          <iframe src="assets/morph.html" width=600 height=600 frameborder="0"></iframe>
         </section>
         <section data-auto-animate>
           <div style="display: flex; align-items: center;">\[X(\xi) = \displaystyle{\int^{\infty}_{-\infty}}\]
@@ -60,7 +62,7 @@
             \[dt\]
           </div>
           <br>
-          <iframe src="./assets/fourier.html" width=400 height=400 frameborder="0"></iframe>
+          <iframe src="assets/fourier.html" width=400 height=400 frameborder="0"></iframe>
         </section>
       </section>
       <section>
@@ -71,7 +73,7 @@
         <section>
           <h3 style="font-weight: bold;">D F T</h3>
           <h4>Discrete Fourier Transform</h4>
-          <iframe src="./assets/graph2.html" width=700 height=300 frameborder="0"></iframe>
+          <iframe src="assets/graph2.html" width=700 height=300 frameborder="0"></iframe>
         </section>
         <section>
           <h3 style="font-weight: bold;">F F T</h3>
@@ -90,7 +92,7 @@
             $\displaystyle{X_k =\sum^{N-1}_{n=0}{x_ne^{-2\pi kn/N}}}\quad k = 0, ... , N-1 .$
           </div>
           <br>
-          <iframe src="./assets/dct.html" width=400 height=400 frameborder="0"></iframe>
+          <iframe src="assets/dct.html" width=400 height=400 frameborder="0"></iframe>
         </section>
       </section>
       <section>
@@ -99,14 +101,14 @@
           <h4>Joint Photographic Experts Group</h4>
         </section>
         <section>
-          <img src="./assets/malina.png" alt="">
+          <img src="assets/malina.png" alt="">
         </section>
         <section>
           <h3>Color space transform</h3>
           <div style="display: flex; justify-content: center;">
-            <img src="./assets/Y_colored.png" alt="" width=300>
-            <img src="./assets/Cb_colored.png" alt="" width=300>
-            <img src="./assets/Cr_colored.png" alt="" width=300>
+            <img src="assets/Y_colored.png" alt="" width=300>
+            <img src="assets/Cb_colored.png" alt="" width=300>
+            <img src="assets/Cr_colored.png" alt="" width=300>
           </div>
         </section>
         <section>
@@ -114,14 +116,14 @@
         </section>
         <section style="display:grid;place-items:center;" data-auto-animate>
           <div style="width:650px;height:650px;position:relative;overflow:hidden;"><img
-              style="position:absolute;left:0;" src="./assets/8x8.png" alt=""></div>
+              style="position:absolute;left:0;" src="assets/8x8.png" alt=""></div>
         </section>
         <section style="display:grid;place-items:center;" data-auto-animate>
           <div style="width:650px;height:650px;position:relative;overflow:hidden;">
             <img style="display:block;position:absolute;
             width:6500px;max-width:6500px;max-height:unset;height:unset;
             left:-3500px;top:-1360px;
-            image-rendering:pixelated;" src="./assets/8x8.png" alt="">
+            image-rendering:pixelated;" src="assets/8x8.png" alt="">
           </div>
         </section>
         <section style="display:grid;place-items:center;" data-auto-animate>
@@ -129,7 +131,7 @@
             <img style="display:block;position:absolute;
             width:39000px;max-width:39000px;max-height:unset;height:unset;
             left:-21040px;top:-8100px;
-            image-rendering:pixelated;" src="./assets/8x8.png" alt="">
+            image-rendering:pixelated;" src="assets/8x8.png" alt="">
           </div>
         </section>
       </section>
@@ -214,10 +216,43 @@
           <img src="assets/dcttable.png" alt="" width=400 height=400>
         </section>
         <section data-auto-animate>
+          <div style="display:grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+                place-items: center;;
+            ">
+            <div style="
+                font-size: 30%;
+                grid-row: 1 / 2; 
+                grid-column: 1 / 2; /*
+              " data-id=5>
+              <fit->$$
+              G=\left[\begin{array}{rrrrrrrr}
+              -489&-31.16&22.39&24.78&9.25&4.69&35.1&-7.61\\
+              -134.08&109.79&-39.62&10.48&-9.89&-32.28&21.12&5.68\\
+              -134.97&-253.81&-79.67&118.39&-19.68&40.1&-8.07&11.38\\
+              -65.01&-2.69&269.96&-18.72&39.46&13.22&25.15&-10.85\\
+              96.25&221.86&4.16&-130.05&41&2.72&-31.76&-30.57\\
+              -20.32&22.37&-23&-54.62&27.23&-16.83&-3.01&10.17\\
+              -42.32&-17.35&-26.57&23.94&65.52&22.06&13.67&34.94\\
+              -31.23&-14.17&20.34&-5.07&25.08&-80.53&31.89&13.76
+              \end{array}\right]\quad
+              $$</fit->
+            </div>
+            <iframe style="
+                grid-row: 1 / 2; 
+                grid-column: 1 / 2;
+                width: 600px;
+                height: 600px;
+                max-height: unset;
+              " src="assets/dct2.html" width=600 height=600 frameborder="0"></iframe>
+          </div>
+        </section>
+        <section data-auto-animate>
           <h2>Quantization</h2>
           <br>
           <div style="font-size: 40%;" data-id=5>
-            $$
+            <fit->$$
             G=\left[\begin{array}{rrrrrrrr}
             -489&-31.16&22.39&24.78&9.25&4.69&35.1&-7.61\\
             -134.08&109.79&-39.62&10.48&-9.89&-32.28&21.12&5.68\\
@@ -228,7 +263,7 @@
             -42.32&-17.35&-26.57&23.94&65.52&22.06&13.67&34.94\\
             -31.23&-14.17&20.34&-5.07&25.08&-80.53&31.89&13.76
             \end{array}\right]\quad
-            $$
+            $$</fit->
           </div>
           <br>
           <div style="font-size: 40%;">
@@ -270,7 +305,7 @@
         <section>
           <h2>Entropy Encoding</h2>
           <div style="display: flex;gap:2rem;justify-content: center;align-items:center;"><iframe
-              src="./assets/zigzag.html" width=400 height=400 frameborder="0"></iframe>
+              src="assets/zigzag.html" width=400 height=400 frameborder="0"></iframe>
             <div style="font-size: 50%;"><fit->
                 $$
                 \begin{array}{rrrrrrrr}
@@ -335,9 +370,13 @@
         </section>
         <section>
           <h3>Result</h3>
-          <div class="display:flex;">
-            <img src="assets/malina.png" alt="" width=400 height=400>
-            <img src="assets/malina.jpg" alt="" width=400 height=400>
+          <div style="display:flex;justify-content: center;">
+            <div><img src="assets/malina.png" alt="" width=400 height=400>
+              <p>PNG</p>
+            </div>
+            <div><img src="assets/malina.jpg" alt="" width=400 height=400>
+              <p>JPEG</p>
+            </div>
           </div>
         </section>
       </section>

@@ -1,0 +1,81 @@
+<link rel="stylesheet" type="text/css" href="/dist/jsxgraph.css">
+<script type="text/javascript" src="/dist/jsxgraph.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style type="text/css">
+  body,
+  html {
+    /* background: oklch(23.64% 0.0045 248); */
+    background: none transparent;
+    margin: 0;
+    border: none;
+    /* background-color: #000000 !important; */
+  }
+
+  #box {
+    border-radius: 0;
+    border: none;
+
+  }
+</style>
+
+<div id="box" class="jxgbox"></div>
+
+<script type="text/javascript">
+  const box = document.getElementById("box");
+
+  const width = 600;
+  const height = 600;
+  box.style.width = `${width}px`;
+  box.style.height = `${height}px`;
+  box.style.border = `none`;
+
+  let board = JXG.JSXGraph.initBoard(
+    'box',
+    {
+      boundingbox: [-2, 2, 2, -2],
+      axis: true,
+      showCopyright: false,
+      showNavigation: false
+    });
+
+  const PI = Math.PI
+
+  let slider1 = board.create('slider', [[-1.8, -1.6], [1.8, -1.6], [0, 2*PI, 10 * PI]]);
+  let slider2 = board.create('slider', [[-1.8, -1.8], [1.8, -1.8], [0, 1, PI]]);
+  let morph = board.create('slider', [[-1.8, 1.6], [1.8, 1.6], [0, 0, 1]]);
+
+  board.create('button', [-1.8, -1.4, 'Animate', function () {
+    morph.startAnimation(1, 60, 20);  // direction, steps, delay(ms)
+  }]);
+  board.create('button', [-1.1, -1.4, 'Stop', function () {
+    morph.stopAnimation();
+  }]);
+  board.create('button', [-0.6, -1.4, 'Reset', function () {
+    morph.setValue(0);
+  }]);
+
+  const f = (x) => (Math.cos(2 * x * PI) + Math.cos(x * PI + 2)) / 2
+
+  // let p1 = board.create('point', [
+  //   () => f(slider1.Value() / slider2.Value()) * Math.cos(slider1.Value() * 2 * PI),
+  //   () => f(slider1.Value() / slider2.Value()) * Math.sin(slider1.Value() * 2 * PI)
+  // ], {size: 3, color: "blue", name: ""})
+  // p1.addParents([slider1])
+
+  // let c1 = board.create('curve', [
+  //   (t) => f(t / slider2.Value()) * Math.cos(t * 2 * PI),
+  //   (t) => f(t / slider2.Value()) * Math.sin(t * 2 * PI),
+  //   0, () => slider1.Value()
+  // ], {strokeWidth: 2})
+  // c1.addParents([slider1, slider2])
+
+  let curve = board.create('curve', [
+    (t) => (1 - morph.Value()) * t
+      + morph.Value() * f(t / slider2.Value()) * Math.cos(t * 2 * PI),
+    (t) => (1 - morph.Value()) * f(t)
+      + morph.Value() * f(t / slider2.Value()) * Math.sin(t * 2 * PI),
+    () => -slider1.Value(), () => slider1.Value()
+  ], {strokeWidth: 2})
+  curve.addParents([morph])
+
+</script>

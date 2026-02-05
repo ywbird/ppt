@@ -1,0 +1,91 @@
+[[ppts]]
+title = "Procedural Animation"
+path = "/ppt/procedural/index.html"
+hero_img = "assets/procedural.webp"
+date = "2025-03-28"
+tags = ["금요학술포럼", "수학", "애니메이션"]
+
+[[ppts]]
+title = "프랑켄슈타인"
+path = "/ppt/frankenstein/index.html"
+hero_img = "assets/frankenstein.webp"
+date = "2025-??-??"
+tags = ["문학"]
+
+[[ppts]]
+title = "Circle inversion"
+path = "/ppt/circle-inversion/index.html"
+hero_img = "assets/circle-inv.webp"
+date = "2025-??-??"
+tags = ["수학", "기하학"]
+
+[[ppts]]
+title="푸리에 변환 & JPEG 압축"
+path="/ppt/jpeg/index.html"
+hero_img = "assets/fourier.webp"
+date="2025-11-07"
+tags=["금요학술포럼", "수학", "컴퓨터공학"]
+
+[[ppts]]
+title="3차 곡선 - Bezier Curve"
+path="/old/bezier-ppt/index.html"
+hero_img = "assets/bezier.webp"
+date="2024-??-??"
+tags=["금요학술포험", "수학"]
+
+[[ppts]]
+title="Lambda Calculus"
+path="/old/lambda-ppt/index.html"
+hero_img = "assets/lambda-calculus.webp"
+date="2024-??-??"
+tags=["금요학술포험", "수학"]
+
+[[ppts]]
+title="원의 방정식의 다양한 표현 방법"
+path="/old/circle-ppt/index.html"
+hero_img = "assets/circle-formula.webp"
+date="2024-??-??"
+tags=["수학", "기하학"]
+
+[[ppts]]
+title="몬티홀 문제"
+path="/old/monty-hall-ppt/index.html"
+date="2024-??-??"
+hero_img = "assets/monty-hall.webp"
+tags=["수학", "확률론"]
+
+[[ppts]]
+title="냉전 체제의 형성과 그 영향"
+path="/old/history-cold-war/index.html"
+hero_img = "assets/cold-war.webp"
+date="2024-??-??"
+tags=["역사", "세계사"]
+
+[[ppts]]
+title="을미사변과 을미개혁"
+path="/old/history-ppt/index.html"
+date="2024-??-??"
+hero_img = "assets/history-eulmi.webp"
+tags=["역사", "한국사"]
+
+[[ppts]]
+title="SK ZIC 엔진오일 광고 분석"
+path="/old/korean-ppt/index.html"
+hero_img = "assets/korean-ad.webp"
+date="2024-??-??"
+tags=["국어", "미디어"]
+
+[[ppts]]
+title="사람과 사람의 감정"
+path="/old/book-ppt/index.html"
+hero_img = "assets/literature.webp"
+date="2024-??-??"
+tags=["국어", "문학"]
+
+[[ppts]]
+title="인류의 집단생활의 원인 탐구"
+path="/old/ntrl-ctrl-ppt/index.html"
+hero_img = "assets/ntrl-ctrl.webp"
+date="2024-??-??"
+tags=["과학", "생명과학"]
+

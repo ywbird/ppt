@@ -35,63 +35,63 @@ tags=["금요학술포럼", "수학", "컴퓨터공학"]
 
 [[ppts]]
 title="3차 곡선 - Bezier Curve"
-path="/marp/bezier-ppt/index.html"
+path="/old/bezier-ppt/index.html"
 hero_img = "assets/bezier.webp"
 date="2024-??-??"
 tags=["금요학술포험", "수학"]
 
 [[ppts]]
 title="Lambda Calculus"
-path="/marp/lambda-ppt/index.html"
+path="/old/lambda-ppt/index.html"
 hero_img = "assets/lambda-calculus.webp"
 date="2024-??-??"
 tags=["금요학술포험", "수학"]
 
 [[ppts]]
 title="원의 방정식의 다양한 표현 방법"
-path="/marp/circle-ppt/index.html"
+path="/old/circle-ppt/index.html"
 hero_img = "assets/circle-formula.webp"
 date="2024-??-??"
 tags=["수학", "기하학"]
 
 [[ppts]]
 title="몬티홀 문제"
-path="/marp/monty-hall-ppt/index.html"
+path="/old/monty-hall-ppt/index.html"
 date="2024-??-??"
 hero_img = "assets/monty-hall.webp"
 tags=["수학", "확률론"]
 
 [[ppts]]
 title="냉전 체제의 형성과 그 영향"
-path="/marp/history-cmarp-war/index.html"
-hero_img = "assets/cmarp-war.webp"
+path="/old/history-cold-war/index.html"
+hero_img = "assets/cold-war.webp"
 date="2024-??-??"
 tags=["역사", "세계사"]
 
 [[ppts]]
 title="을미사변과 을미개혁"
-path="/marp/history-ppt/index.html"
+path="/old/history-ppt/index.html"
 date="2024-??-??"
 hero_img = "assets/history-eulmi.webp"
 tags=["역사", "한국사"]
 
 [[ppts]]
 title="SK ZIC 엔진오일 광고 분석"
-path="/marp/korean-ppt/index.html"
+path="/old/korean-ppt/index.html"
 hero_img = "assets/korean-ad.webp"
 date="2024-??-??"
 tags=["국어", "미디어"]
 
 [[ppts]]
 title="사람과 사람의 감정"
-path="/marp/book-ppt/index.html"
+path="/old/book-ppt/index.html"
 hero_img = "assets/literature.webp"
 date="2024-??-??"
 tags=["국어", "문학"]
 
 [[ppts]]
 title="인류의 집단생활의 원인 탐구"
-path="/marp/ntrl-ctrl-ppt/index.html"
+path="/old/ntrl-ctrl-ppt/index.html"
 hero_img = "assets/ntrl-ctrl.webp"
 date="2024-??-??"
 tags=["과학", "생명과학"]

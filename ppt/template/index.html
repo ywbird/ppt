@@ -1,47 +1,130 @@
-<!doctype html>
+import { file, write } from "bun";
+
+// 템플릿 내부에 {{TITLE}}, {{THEME}}, {{HIGHLIGHT}}, {{SLIDES}} 플레이스홀더를 사용합니다.
+const HTML_TEMPLATE = `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>reveal.js</title>
+    <title>{{TITLE}}</title>
 
-    <link rel="stylesheet" href="/dist/reset.css">
-    <link rel="stylesheet" href="/dist/reveal.css">
-    <link rel="stylesheet" href="/dist/theme/simple.css">
-
-    <!-- Theme used for syntax highlighted code -->
-    <link rel="stylesheet" href="/plugin/highlight/tokyo-night-dark.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/theme/{{THEME}}.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/{{HIGHLIGHT}}.min.css">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-	<section>
-	  <h1 class="r-fit-text">Starter Presentation</h1>
-	</section>
+        {{SLIDES}}
       </div>
     </div>
 
-    <script src="/dist/reveal.js"></script>
-    <script src="/plugin/notes/notes.js"></script>
-    <script src="/plugin/markdown/markdown.js"></script>
-    <script src="/plugin/highlight/highlight.js"></script>
-    <script src="/plugin/zoom/zoom.js"></script>
-    <script src="/plugin/math/math.js"></script>
-    <script src="/plugin/animated/animated.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/zoom/zoom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.0.4/plugin/math/math.js"></script>
+    
     <script>
-      // More info about initialization & config:
-      // - https://revealjs.com/initialization/
-      // - https://revealjs.com/config/
       Reveal.initialize({
-	  hash: true,
-	  dependencies: [
-              // Other plugins
-              {src: '/plugins/animated/animated.js', async: true}
-          ],
-	  // Learn about plugins: https://revealjs.com/plugins/
-	  plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom, RevealMath.KaTeX ]
+          hash: true,
+          plugins: [ RevealHighlight, RevealNotes, RevealZoom, RevealMath.KaTeX ]
       });
     </script>
   </body>
-</html>
+</html>`;
+
+async function buildPresentation() {
+  const args = Bun.argv.slice(2);
+
+  if (args.length < 2) {
+    console.error("❌ Error: Please specify both input and output file paths.");
+    console.error("👉 Usage: bun run build.ts <input_markdown> <output_html>");
+    process.exit(1);
+  }
+
+  const markdownPath = args[0];
+  const outputPath = args[1];
+
+  try {
+    const mdContent = await file(markdownPath).text();
+
+    let content = mdContent.trim();
+    let frontmatter = "";
+    
+    // 기본값 설정
+    let pageTitle = "reveal.js";
+    let theme = "black"; // reveal.js의 기본 테마는 black입니다.
+    let highlight = "tokyo-night-dark";
+
+    // 1. Frontmatter 추출 및 옵션 파싱
+    const fmRegex = /^\s*---\n([\s\S]*?)\n---\n/;
+    const match = content.match(fmRegex);
+    
+    if (match) {
+      frontmatter = match[1];
+      content = content.replace(fmRegex, "");
+      
+      // Title 추출
+      const titleMatch = frontmatter.match(/^title:\s*(.+)$/im);
+      if (titleMatch) pageTitle = titleMatch[1].trim().replace(/^["']|["']$/g, '');
+
+      // Theme 추출
+      const themeMatch = frontmatter.match(/^theme:\s*(.+)$/im);
+      if (themeMatch) {
+        let parsedTheme = themeMatch[1].trim().replace(/^["']|["']$/g, '').toLowerCase();
+        // 사용자가 default라고 적으면 black으로 변환
+        theme = parsedTheme === 'default' ? 'black' : parsedTheme;
+      }
+
+      // Highlight 추출
+      const highlightMatch = frontmatter.match(/^highlight:\s*(.+)$/im);
+      if (highlightMatch) {
+        let parsedHighlight = highlightMatch[1].trim().replace(/^["']|["']$/g, '').toLowerCase();
+        // 사용자가 tokyo라고 적으면 실제 파일명인 tokyo-night-dark로 변환
+        highlight = parsedHighlight === 'tokyo' ? 'tokyo-night-dark' : parsedHighlight;
+      }
+      
+      console.log(`[Config] Title: ${pageTitle} | Theme: ${theme} | Highlight: ${highlight}`);
+    }
+
+    // 2. 슬라이드 파싱 및 HTML 렌더링 (Bun 내장 Markdown 파서 사용)
+    const horizontalSlides = content.split(/\n\s*---\s*\n/);
+    let slidesHtml = "";
+
+    for (const hSlide of horizontalSlides) {
+      const verticalSlides = hSlide.split(/\n\s*\*\*\*\s*\n/);
+      
+      if (verticalSlides.length > 1) {
+        slidesHtml += `\n        <section>`;
+        for (const vSlide of verticalSlides) {
+          const renderedHtml = Bun.markdown.html(vSlide.trim());
+          slidesHtml += `\n          <section>\n${renderedHtml}\n          </section>`;
+        }
+        slidesHtml += `\n        </section>`;
+      } else {
+        const renderedHtml = Bun.markdown.html(hSlide.trim());
+        slidesHtml += `\n        <section>\n${renderedHtml}\n        </section>`;
+      }
+    }
+
+    // 3. 템플릿의 플레이스홀더 치환
+    const finalHtml = HTML_TEMPLATE
+      .replace('{{TITLE}}', pageTitle)
+      .replace('{{THEME}}', theme)
+      .replace('{{HIGHLIGHT}}', highlight)
+      .replace('{{SLIDES}}', slidesHtml);
+
+    // 4. 저장
+    await write(outputPath, finalHtml);
+    console.log(`✅ Build successful! -> ${outputPath}`);
+
+  } catch (error) {
+    console.error("❌ An error occurred during the build. Please check the file paths.", error);
+  }
+}
+
+buildPresentation();

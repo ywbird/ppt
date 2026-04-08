@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>복소함수의 시각화를 통해 이미지를 구겨보자</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/theme/black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        
+        <section>
+<h1>복소함수의 시각화</h1>
+<h3>를 통해 이미지를 구겨보자</h3>
+<h4>by 30314 이도이</h4>
+
+        </section>
+        <section>
+          <section>
+<p>연속함수</p>
+<p>$\downarrow$</p>
+<div class="fragment">
+<ul>
+<li>테일러 급수</li>
+<li>파데 근사</li>
+<li>바이어슈트라스 분해 정리</li>
+</ul>
+<p>$\downarrow$</p>
+</div>
+<div class="fragment">
+다항함수/유리함수
+</div>
+
+          </section>
+          <section>
+<p>$
+a_0 + a_1x + a_3x^3 + a_3x^3 + \cdots + a_nx^n
+$</p>
+<br>
+<p>$
+\displaystyle{
+\frac
+{a_0 + a_1x + a_3x^3 + a_3x^3 + \cdots + a_nx^n}
+{1 + b_1x + b_3x^3 + b_3x^3 + \cdots + b_nx^n}
+}
+$</p>
+<br>
+<p>$
+(x-a_0)(x-a_1)(x-a_2)\cdots(x-a_n)
+$</p>
+
+          </section>
+        </section>
+        <section>
+          <section>
+<p>$
+f: \mathbb R \to \mathbb R
+$</p>
+<div class="fragment">
+$\downarrow$
+<p>$
+\mathbb R ^ 2
+$</p>
+</div>
+
+          </section>
+          <section>
+<p>$
+a+bi \mapsto (a, b)
+$</p>
+<div class=fragment>$
+\mathbb C \cong \mathbb R ^ 2
+$</div>
+
+          </section>
+          <section>
+<p>$
+f: \mathbb C \to \mathbb C
+$</p>
+<div class="fragment">
+$\downarrow$
+<p>$
+\mathbb C ^ 2 \cong \mathbb R ^ 4
+$</p>
+</div>
+
+          </section>
+        </section>
+        <section>
+<!-- ## 시각화 방법 -->
+<h2>Visualization Methods</h2>
+<ul>
+<li class="fragment highlight-green">$\text{Domain Coloring}$</li>
+<li>$\text{3D Plot}$</li>
+<li>$\text{Vector Field}$</li>
+<li class="fragment highlight-green">$z-w\text{ Plane}$</li>
+<li>$\text{Riemann Sphere}$</li>
+</ul>
+
+        </section>
+        <section>
+          <section>
+<h2>Domain Coloring</h2>
+
+          </section>
+          <section data-auto-animate>
+<h3>HSL</h3>
+
+          </section>
+          <section data-auto-animate>
+<p>$
+f(z) = a + bi
+$</p>
+<div class=fragment>
+$\downarrow$
+<p>$hsl($ <span class="fragment highlight-red">$a$</span> $, 1\ , $ <span class="fragment highlight-red">$b$</span> $)$</p>
+</div>
+
+          </section>
+          <section data-auto-animate>
+<p>$
+f(z) = a + bi
+$</p>
+<p>$l: (-\infty, \infty) \to (0, 1)$</p>
+<p>$\downarrow$</p>
+<p>$hsl($ <span>$l(a)$</span> $, 1\ , $ <span>$l(b)$</span> $)$</p>
+
+          </section>
+          <section data-auto-animate>
+<p>$
+f(z) = re^{i\theta}
+$</p>
+<div class=fragment>
+$l: (-\infty, \infty) \to (0, 1)$
+<p>$\downarrow$</p>
+<p>$hsl($ <span>$\displaystyle{\frac{\theta}{2\pi}}$</span> $, 1\ , $ <span>$l(r)$</span> $)$</p>
+</div>
+
+          </section>
+        </section>
+        <section>
+          <section data-auto-animate>
+<h2>Z-W plane</h2>
+
+          </section>
+          <section data-auto-animate>
+<p>$z \rightsquigarrow f(z)$</p>
+
+          </section>
+        </section>
+        <section>
+          <section data-auto-animate>
+<h2>Branch Cut</h2>
+
+          </section>
+          <section data-auto-animate>
+<p>$\ln x$</p>
+
+          </section>
+          <section data-auto-animate>
+<p>$\ln re^{i\theta}$</p>
+
+          </section>
+          <section data-auto-animate>
+<p>$\ln r + i(\theta + 2\pi n)$</p>
+
+          </section>
+        </section>
+        <section>
+<h2>Riemann Surface</h2>
+
+        </section>
+        <section>
+          <section>
+<h2>Domain Coloring</h2>
+<h2>and</h2>
+<h2>Z-W Plane</h2>
+
+          </section>
+          <section data-auto-animate>
+<h3>Domain Coloring</h3>
+<p>$f(z) \rightsquigarrow z$</p>
+<br>
+<h3>Z-W Plane</h3>
+<p>$z \rightsquigarrow f(z)$</p>
+
+          </section>
+          <section data-auto-animate>
+<h3>Domain Coloring</h3>
+<p>$f(z) \rightsquigarrow z$</p>
+<br>
+<h3>Z-W Plane</h3>
+<p>$f^{-1}(z) \rightsquigarrow z$</p>
+
+          </section>
+          <section data-auto-animate>
+<h3>Domain Coloring = Z-W Plane</h3>
+
+          </section>
+        </section>
+        <section>
+<p>ㄴㅇㄹ</p>
+
+        </section>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/zoom/zoom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.2.1/plugin/math/math.js"></script>
+    
+    <script>
+      Reveal.initialize({
+          hash: true,
+          // Reveal.js의 플러그인 옵션명은 mathjax3를 사용하지만,
+          // 내부 엔진은 아래 URL을 통해 MathJax 4를 불러옵니다.
+          mathjax3: {
+            mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+            tex: {
+              inlineMath: [ [ '$', '$' ], [ '\\(', '\\)' ]  ]
+            },
+            options: {
+              skipHtmlTags: [ 'script', 'noscript', 'style', 'textarea', 'pre' ]
+            },
+          },
+          plugins: [ RevealHighlight, RevealNotes, RevealZoom, RevealMath.MathJax3 ]
+      });
+    </script>
+  </body>
+</html>

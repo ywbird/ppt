@@ -20,7 +20,7 @@ title: "복소함수의 시각화를 통해 이미지를 구겨보자"
 
 ### 를 통해 이미지를 구겨보자
 
-#### by 30314 이도이
+by 30314 이도이
 
 ---
 
@@ -461,3 +461,8 @@ $f^{-1}(z) \rightsquigarrow z$
 
 ---
 
+<img src="./assets/qrcode.png" />
+
+**`ywbird@naver.com`**
+
+&copy;ywbird

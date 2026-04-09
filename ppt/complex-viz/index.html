@@ -16,14 +16,33 @@
       <div class="slides">
         
         <section>
-<h1>복소함수의 시각화</h1>
+<style>
+.colw{
+    display: flex;
+    gap: 5px;
+}
+.col{
+    flex: 1;
+}
+</style>
+<!-- e=1&w=400& -->
+<!-- e=1&w=800&h=300& -->
+<h1 class="r-fit-text">복소함수의 시각화</h1>
 <h3>를 통해 이미지를 구겨보자</h3>
 <h4>by 30314 이도이</h4>
 
         </section>
         <section>
-          <section>
-<p>연속함수</p>
+          <section data-auto-animate>
+<h2>연속함수</h2>
+<iframe
+src="https://viz.meliplug.info/gen/index.html?e=0&w=800&h=300&c=H4sIAAAAAAAAAyWOwQqCQBCG7z7F4ElhWwjyotjBAqlLhw4JIbHq6i7VbuyOZEjv3rodhvmHb4b5Wq0sQqOZ6SCHY1XS47kqDXsJKpXEYgFRAFCcqtthT1yaXYG7GFUn1dDoKYXrakNgTRMCrq9cqIlfYpO0KaAZ%2BX%2B2Qr93%2BvUxchCYQs8e1pNvEGdB0HqVYfntVLwSbQ1nyKOwH1WLUitPQwLXKd8%2BGQpqpYqmuCYwWzT6zi%2ByQ5FC8o2zHwRZEF3bAAAA"
+width=802 height=302
+></iframe>
+
+          </section>
+          <section data-auto-animate>
+<h2>연속함수</h2>
 <p>$\downarrow$</p>
 <div class="fragment">
 <ul>
@@ -38,7 +57,7 @@
 </div>
 
           </section>
-          <section>
+          <section data-auto-animate>
 <p>$
 a_0 + a_1x + a_3x^3 + a_3x^3 + \cdots + a_nx^n
 $</p>
@@ -56,6 +75,20 @@ $</p>
 $</p>
 
           </section>
+          <section data-auto-animate>
+<p>$
+\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + O(9)
+$</p>
+<br>
+<p>$
+\sin(x) \approx \frac{x - \frac{53}{396}x^3 + \frac{551}{166320}x^5}{1 + \frac{13}{396}x^2 + \frac{5}{11088}x^4}
+$</p>
+<br>
+<p>$
+\sin(x) = x \left(1 - \frac{x^2}{\pi^2}\right) \left(1 - \frac{x^2}{4\pi^2}\right) \left(1 - \frac{x^2}{9\pi^2}\right) \cdots
+$</p>
+
+          </section>
         </section>
         <section>
           <section>
@@ -63,7 +96,7 @@ $</p>
 f: \mathbb R \to \mathbb R
 $</p>
 <div class="fragment">
-$\downarrow$
+<p>$\downarrow$</p>
 <p>$
 \mathbb R ^ 2
 $</p>
@@ -74,9 +107,11 @@ $</p>
 <p>$
 a+bi \mapsto (a, b)
 $</p>
-<div class=fragment>$
+<div class=fragment>
+<p>$
 \mathbb C \cong \mathbb R ^ 2
-$</div>
+$</p>
+</div>
 
           </section>
           <section>
@@ -84,7 +119,7 @@ $</div>
 f: \mathbb C \to \mathbb C
 $</p>
 <div class="fragment">
-$\downarrow$
+<p>$\downarrow$</p>
 <p>$
 \mathbb C ^ 2 \cong \mathbb R ^ 4
 $</p>
@@ -109,8 +144,10 @@ $</p>
 <h2>Domain Coloring</h2>
 
           </section>
-          <section data-auto-animate>
+          <section>
 <h3>HSL</h3>
+<p><img src="./assets/hsl.jpg" alt="hsl" /></p>
+<p><a href="https://www.hslpicker.com/">HSL Color Picker</a></p>
 
           </section>
           <section data-auto-animate>
@@ -118,7 +155,7 @@ $</p>
 f(z) = a + bi
 $</p>
 <div class=fragment>
-$\downarrow$
+<p>$\downarrow$</p>
 <p>$hsl($ <span class="fragment highlight-red">$a$</span> $, 1\ , $ <span class="fragment highlight-red">$b$</span> $)$</p>
 </div>
 
@@ -132,7 +169,62 @@ $</p>
 <p>$hsl($ <span>$l(a)$</span> $, 1\ , $ <span>$l(b)$</span> $)$</p>
 
           </section>
-          <section data-auto-animate>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = \sin x$<br>
+<img width=300 src="./assets/sin-sigmoid.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+<div class=col>
+$f(x) = \sin x$<br>
+<img width=300 src="./assets/sin-modulo.png" data-preview-image/>
+<p>$l = mod$</p>
+</div>
+<div class=col>
+$f(x) = \text{atanh}\ x$<br>
+<img width=300 src="./assets/atanh-modulo.png" data-preview-image/>
+<p>$l = mod$</p>
+</div>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = \sinh x$<br>
+<img width=300 src="./assets/sinh-modulo.png" data-preview-image/>
+$l = mod$
+</div>
+<div class=col>
+$f(x) = \text{asin}\ x$<br>
+<img width=300 src="./assets/arcsin-modulo.png" data-preview-image/>
+$l = mod$
+</div>
+<div class=col>
+$f(x) = \tan x$<br>
+<img width=300 src="./assets/tan-sigmoid.png" data-preview-image/>
+$l = sigmoid$
+</div>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$\tiny{f(x) = x^3 + 3x^2 + 15x + 1}$<br>
+<img width=300 src="./assets/quadratic-sigmoid-2.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+<div class=col>
+$\tiny{f(x) = x^3 + (7-7i)x^2 + (15+7i)x + 9}$<br>
+<img width=300 src="./assets/quadratic-sigmoid.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+</div>
+
+          </section>
+          <section>
 <p>$
 f(z) = re^{i\theta}
 $</p>
@@ -140,6 +232,39 @@ $</p>
 $l: (-\infty, \infty) \to (0, 1)$
 <p>$\downarrow$</p>
 <p>$hsl($ <span>$\displaystyle{\frac{\theta}{2\pi}}$</span> $, 1\ , $ <span>$l(r)$</span> $)$</p>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = \sqrt{x}$<br>
+<img width=300 src="./assets/polar-sqrt.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+<div class=col>
+$f(x) = \sin{x}$<br>
+<img width=300 src="./assets/polar-sin.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+<div class=col>
+$f(x) = \sinh{x}$<br>
+<img width=300 src="./assets/polar-sinh.png" data-preview-image/>
+<p>$l = sigmoid$</p>
+</div>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$\tiny{f(x) = x^3 + 3x^2 + 15x + 1}$<br>
+<img width=300 src="./assets/polar-quadratic.png" data-preview-image/>
+</div>
+<div class=col>
+$\tiny{f(x) = x^3 + (7-7i)x^2 + (15+7i)x + 9}$<br>
+<img width=300 src="./assets/polar-quadratic-2.png" data-preview-image/>
+</div>
 </div>
 
           </section>
@@ -151,6 +276,56 @@ $l: (-\infty, \infty) \to (0, 1)$
           </section>
           <section data-auto-animate>
 <p>$z \rightsquigarrow f(z)$</p>
+
+          </section>
+          <section>
+<iframe
+src="./assets/zw.html"
+width=602 height=602
+></iframe>
+
+          </section>
+          <section>
+<img src="./assets/default.png" width=600 />
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = x^2$<br>
+<img width=300 src="./assets/zw-sqr.png" data-preview-image/>
+</div>
+<div class=col>
+$f(x) = x^3$<br>
+<img width=300 src="./assets/zw-cube.png" data-preview-image/>
+</div>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = e^x$<br>
+<img width=300 src="./assets/zw-exp.png" data-preview-image/>
+</div>
+<div class=col>
+$f(x) = \ln x$<br>
+<img width=300 src="./assets/zw-ln.png" data-preview-image/>
+</div>
+</div>
+
+          </section>
+          <section>
+<div class=colw>
+<div class=col>
+$f(x) = \sin x$<br>
+<img width=300 src="./assets/zw-sin.png" data-preview-image/>
+</div>
+<div class=col>
+$f(x) = \tan x$<br>
+<img width=300 src="./assets/zw-tan.png" data-preview-image/>
+</div>
+</div>
 
           </section>
         </section>
@@ -173,8 +348,15 @@ $l: (-\infty, \infty) \to (0, 1)$
           </section>
         </section>
         <section>
+          <section>
 <h2>Riemann Surface</h2>
 
+          </section>
+          <section>
+<p><a href="https://www.desmos.com/3d/iihaj3ss2n">https://www.desmos.com/3d/iihaj3ss2n</a><br />
+<a href="https://www.desmos.com/3d/gxz14pcuvu">https://www.desmos.com/3d/gxz14pcuvu</a></p>
+
+          </section>
         </section>
         <section>
           <section>
@@ -200,12 +382,11 @@ $l: (-\infty, \infty) \to (0, 1)$
 
           </section>
           <section data-auto-animate>
-<h3>Domain Coloring = Z-W Plane</h3>
+<h3>Domain Coloring = Z-W Plane<sup>-1</sup></h3>
 
           </section>
         </section>
         <section>
-<p>ㄴㅇㄹ</p>
 
         </section>
       </div>

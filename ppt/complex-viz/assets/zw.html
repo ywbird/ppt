@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Plane Transformation (z to w)</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+    <style>
+        /* Basic styling to center the box and make it look clean */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        #jxgbox {
+            width: 700px;
+            height: 700px;
+            border: 1px solid #ccc;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="jxgbox" class="jxgbox" style="width: 600px; height: 600px;"></div>
+
+    <script>
+        // 1. Initialize JSXGraph board
+        const board = JXG.JSXGraph.initBoard('jxgbox', {
+            boundingbox: [-5, 5, 5, -5],
+            axis: true,
+            keepaspectratio: true
+        });
+
+        // 2. Define function list
+        const functions = [
+            { name: "w = z^2", fn: (z) => math.square(z) },
+            { name: "w = z^3", fn: (z) => math.pow(z, 3) },
+            { name: "w = e^z", fn: (z) => math.exp(z) },
+            { name: "w = ln z", fn: (z) => math.log(z) },
+            { name: "w = sin(z)", fn: (z) => math.sin(z) },
+            { name: "w = tan(z)", fn: (z) => math.tan(z) },
+        ];
+
+        // 3. Create sliders
+        // First slider: t (Interpolation rate, 0 -> 1)
+        const sliderT = board.create('slider', [[-4, 4.5], [0, 4.5], [0, 0, 1]], {
+            name: 't (Interpolation)',
+            snapWidth: 0.01
+        });
+
+        // Second slider: Function selection (0 -> length - 1)
+        const sliderF = board.create('slider', [[-4, 3.8], [0, 3.8], [0, 0, functions.length - 1]], {
+            name: 'Function No.',
+            snapWidth: 1, // Snap to integer values
+            precision: 0  // Do not display decimal points
+        });
+
+        // Display the currently selected function formula on the screen
+        board.create('text', [2, 4, function() {
+            const idx = Math.floor(sliderF.Value());
+            return "Current Function:  " + functions[idx].name;
+        }], { fontSize: 15, strokeColor: '#333' });
+
+        // 4. Dynamic complex transform function
+        const func = (z) => {
+            const idx = Math.floor(sliderF.Value());
+            return functions[idx].fn(z);
+        };
+
+        // 5. Set grid range and step size
+        const min = -3;
+        const max = 3;
+        const step = 0.5;
+
+        // 6. Create vertical grid lines (x fixed, y varies)
+        for (let x = min; x <= max; x += step) {
+            board.create('curve', [
+                function(s) {
+                    const z = math.complex(x, s);
+                    const w = func(z);
+                    const t = sliderT.Value();
+                    return (1 - t) * z.re + t * w.re; 
+                },
+                function(s) {
+                    const z = math.complex(x, s);
+                    const w = func(z);
+                    const t = sliderT.Value();
+                    return (1 - t) * z.im + t * w.im; 
+                },
+                min, max 
+            ], { strokeColor: '#1f77b4', strokeWidth: 1.5, strokeOpacity: 0.6 });
+        }
+
+        // 7. Create horizontal grid lines (y fixed, x varies)
+        for (let y = min; y <= max; y += step) {
+            board.create('curve', [
+                function(s) {
+                    const z = math.complex(s, y);
+                    const w = func(z);
+                    const t = sliderT.Value();
+                    return (1 - t) * z.re + t * w.re;
+                },
+                function(s) {
+                    const z = math.complex(s, y);
+                    const w = func(z);
+                    const t = sliderT.Value();
+                    return (1 - t) * z.im + t * w.im;
+                },
+                min, max 
+            ], { strokeColor: '#ff7f0e', strokeWidth: 1.5, strokeOpacity: 0.6 });
+        }
+    </script>
+</body>
+</html>
